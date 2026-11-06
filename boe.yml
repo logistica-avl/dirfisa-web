@@ -1,0 +1,26 @@
+name: Actualidad BOE
+on:
+  schedule:
+    - cron: "15 8 * * 1-6"   # lunes a sábado, 08:15 UTC (9:15 en invierno, 10:15 en verano)
+  workflow_dispatch:
+    inputs:
+      dias:
+        description: "Días hacia atrás a revisar"
+        default: "1"
+permissions:
+  contents: write
+jobs:
+  boe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/boe.py --dias "${{ github.event.inputs.dias || '1' }}"
+      - name: Publicar si hay cambios
+        run: |
+          git config user.name "dirfisa-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add web/noticias.json
+          git diff --cached --quiet || (git commit -m "Actualidad BOE $(date +%F)" && git push)
