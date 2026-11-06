@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /boe.py
+Disallow: /netlify.toml
+
+Sitemap: https://dirfisa.com/sitemap.xml
