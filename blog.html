@@ -6,7 +6,8 @@
 <title>Actualidad BOE · DIRFISA</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Novedades diarias del BOE que afectan a las pymes: fiscalidad, empleo, ayudas, morosidad y energía.">
-<link rel="icon" href="logo.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
@@ -54,9 +55,9 @@ a{color:inherit}
 .nav.scrolled{box-shadow:0 10px 30px -14px rgba(20,33,58,.55)}
 .nav .wrap{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:20px;padding-block:12px}
 .nav .logo img{height:44px;width:auto;display:block}
-.tabs{justify-self:end;display:flex;gap:4px;padding:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow-x:auto;scrollbar-width:none;max-width:100%;min-width:0}
+.tabs{justify-self:stretch;display:flex;gap:4px;padding:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow-x:auto;scrollbar-width:none;max-width:100%;min-width:0}
 .tabs::-webkit-scrollbar{display:none}
-.tabs a{flex:none;text-decoration:none;font:700 .92rem var(--display);color:#c9d0de;padding:10px 16px;border-radius:10px;white-space:nowrap;transition:background .15s,color .15s}
+.tabs a{flex:1 0 auto;text-align:center;text-decoration:none;font:700 .92rem var(--display);color:#c9d0de;padding:10px 16px;border-radius:10px;white-space:nowrap;transition:background .15s,color .15s}
 .tabs a:hover{color:#fff;background:rgba(255,255,255,.08)}
 .tabs a[aria-current]{background:var(--gold);color:var(--ink)}
 main section[id],#inicio{scroll-margin-top:96px}
@@ -181,6 +182,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .cat.Energía{background:#f1e9ff;color:#7a4fd6}
 .post h3{font-size:1.02rem;line-height:1.42;font-weight:700;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .post .org{font-size:.84rem;color:var(--mute)}
+.post .sum{color:var(--ink-2);font-size:.95rem;line-height:1.55;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.item .sum{color:var(--ink-2);margin-top:6px;max-width:75ch}
+.item .org b{color:var(--ink-2);font-weight:600}
 .empty{grid-column:1/-1;border:1.5px dashed var(--line);border-radius:22px;padding:40px;text-align:center;color:var(--mute)}
 
 /* Contacto */
@@ -304,7 +308,7 @@ footer nav a:hover{color:var(--ink)}
     <div class="filters" id="filters"></div>
   </div>
   <div id="days"><p class="empty">Las primeras novedades aparecerán tras la próxima publicación del BOE.</p></div>
-  <p class="disc">Selección automática de títulos publicados en el BOE (www.boe.es), con enlace a la fuente oficial. No es asesoramiento fiscal, laboral ni jurídico: consulte siempre el texto oficial y a su asesor.</p>
+  <p class="disc">Selección automática de disposiciones publicadas en el BOE (www.boe.es). Los titulares y resúmenes se generan de forma automática con inteligencia artificial a partir del texto oficial y pueden contener errores. No es asesoramiento fiscal, laboral ni jurídico: consulte siempre el texto oficial y a su asesor.</p>
 </main>
 
 <footer>
@@ -352,7 +356,10 @@ function render() {
   l.forEach(function (n) { if (!g[n.fecha]) { g[n.fecha] = []; order.push(n.fecha); } g[n.fecha].push(n); });
   document.getElementById('days').innerHTML = order.map(function (d) {
     return '<section class="day"><h2>' + dayName(d) + '</h2>' + g[d].map(function (n) {
-      return '<a class="item" href="' + esc(n.url) + '" target="_blank" rel="noopener"><span><span class="cat ' + esc(n.categoria) + '">' + esc(n.categoria) + '</span></span><div><h3>' + esc(n.titulo) + '</h3><div class="org">' + esc(n.organismo) + ' · ' + esc(n.id) + '</div></div><span class="go">Ver en BOE →</span></a>';
+      var body = n.resumen
+        ? '<h3>' + esc(n.titular) + '</h3><p class="sum">' + esc(n.resumen) + '</p><div class="org"><b>Resumen automático.</b> Texto oficial: ' + esc(n.titulo) + ' · ' + esc(n.organismo) + '</div>'
+        : '<h3>' + esc(n.titulo) + '</h3><div class="org">' + esc(n.organismo) + ' · ' + esc(n.id) + '</div>';
+      return '<a class="item" href="' + esc(n.url) + '" target="_blank" rel="noopener"><span><span class="cat ' + esc(n.categoria) + '">' + esc(n.categoria) + '</span></span><div>' + body + '</div><span class="go">Ver en BOE →</span></a>';
     }).join('') + '</section>';
   }).join('');
 }

@@ -6,7 +6,8 @@
 <title>DIRFISA</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="DIRFISA · Director financiero externo para pymes: rentabilidad por servicio y cliente, tesorería a 13 semanas y panel de mando.">
-<link rel="icon" href="logo.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
@@ -54,9 +55,9 @@ a{color:inherit}
 .nav.scrolled{box-shadow:0 10px 30px -14px rgba(20,33,58,.55)}
 .nav .wrap{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:20px;padding-block:12px}
 .nav .logo img{height:44px;width:auto;display:block}
-.tabs{justify-self:end;display:flex;gap:4px;padding:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow-x:auto;scrollbar-width:none;max-width:100%;min-width:0}
+.tabs{justify-self:stretch;display:flex;gap:4px;padding:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow-x:auto;scrollbar-width:none;max-width:100%;min-width:0}
 .tabs::-webkit-scrollbar{display:none}
-.tabs a{flex:none;text-decoration:none;font:700 .92rem var(--display);color:#c9d0de;padding:10px 16px;border-radius:10px;white-space:nowrap;transition:background .15s,color .15s}
+.tabs a{flex:1 0 auto;text-align:center;text-decoration:none;font:700 .92rem var(--display);color:#c9d0de;padding:10px 16px;border-radius:10px;white-space:nowrap;transition:background .15s,color .15s}
 .tabs a:hover{color:#fff;background:rgba(255,255,255,.08)}
 .tabs a[aria-current]{background:var(--gold);color:var(--ink)}
 main section[id],#inicio{scroll-margin-top:96px}
@@ -181,6 +182,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .cat.Energía{background:#f1e9ff;color:#7a4fd6}
 .post h3{font-size:1.02rem;line-height:1.42;font-weight:700;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 .post .org{font-size:.84rem;color:var(--mute)}
+.post .sum{color:var(--ink-2);font-size:.95rem;line-height:1.55;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.item .sum{color:var(--ink-2);margin-top:6px;max-width:75ch}
+.item .org b{color:var(--ink-2);font-weight:600}
 .empty{grid-column:1/-1;border:1.5px dashed var(--line);border-radius:22px;padding:40px;text-align:center;color:var(--mute)}
 
 /* Contacto */
@@ -461,7 +465,7 @@ footer nav a:hover{color:var(--ink)}
         <div class="head">
           <span class="tag"><i></i>Actualidad BOE</span>
           <h2>Lo que cambia para su pyme</h2>
-          <p>Cada día seleccionamos del BOE las novedades de fiscalidad, empleo, ayudas, morosidad y energía.</p>
+          <p>Cada día seleccionamos del BOE las novedades de fiscalidad, empleo, ayudas, morosidad y energía, explicadas en lenguaje claro. Resúmenes automáticos: consulte siempre el texto oficial.</p>
         </div>
         <a class="btn soft" href="blog.html">Ver todas</a>
       </div>
@@ -486,8 +490,8 @@ footer nav a:hover{color:var(--ink)}
         <form class="form" id="form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="web" novalidate>
           <input type="hidden" name="form-name" value="contacto">
           <p hidden><label>No rellenar <input name="web" id="web"></label></p>
-          <h3>Solicite su llamada</h3>
-          <p class="hint">Le llamamos nosotros en el horario que elija.</p>
+          <h3>Solicite información</h3>
+          <p class="hint">Le contactamos nosotros en el horario que elija.</p>
           <div class="g2">
             <div class="f"><label for="nombre">Nombre</label><input id="nombre" name="nombre" autocomplete="name" placeholder="Ana García" required></div>
             <div class="f"><label for="empresa">Empresa</label><input id="empresa" name="empresa" autocomplete="organization" placeholder="Instalaciones García S.L." required></div>
@@ -496,18 +500,9 @@ footer nav a:hover{color:var(--ink)}
             <div class="f"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="ana@empresa.com" required></div>
             <div class="f"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="600 000 000" required></div>
           </div>
-          <fieldset class="chips" id="sector-g">
-            <legend>Sector</legend>
-            <div class="chiprow">
-              <label><input type="radio" name="sector" value="Instaladora eléctrica" id="s1"><span>Eléctrica</span></label>
-              <label><input type="radio" name="sector" value="Climatización" id="s2"><span>Clima</span></label>
-              <label><input type="radio" name="sector" value="Agencia" id="s3"><span>Agencia</span></label>
-              <label><input type="radio" name="sector" value="Obrador" id="s4"><span>Obrador</span></label>
-              <label><input type="radio" name="sector" value="Otro" id="s5"><span>Otro</span></label>
-            </div>
-          </fieldset>
+          <div class="f"><label for="sector">Sector de su empresa</label><input id="sector" name="sector" placeholder="Ej.: instaladora eléctrica, agencia de publicidad…" required></div>
           <fieldset class="chips">
-            <legend>¿Cuándo le llamamos?</legend>
+            <legend>¿Cuándo prefiere que le contactemos?</legend>
             <div class="chiprow two">
               <label><input type="radio" name="horario" value="Mañana" id="h1" checked><span>Por la mañana</span></label>
               <label><input type="radio" name="horario" value="Tarde" id="h2"><span>Por la tarde</span></label>
@@ -515,7 +510,7 @@ footer nav a:hover{color:var(--ink)}
           </fieldset>
           <label class="check" for="acepto"><input type="checkbox" id="acepto" name="acepto" value="sí">
             <span>Acepto la <details><summary>información de privacidad</summary><small>Responsable: Aitor Díaz Camarena (DIRFISA), aitor@dirfisa.com. Finalidad: atender su solicitud y llamarle. Base legal: su consentimiento. No se ceden datos a terceros salvo al proveedor de alojamiento web. Puede ejercer sus derechos escribiendo a ese email.</small></details></span></label>
-          <button class="btn gold" type="submit" id="enviar">Quiero que me llamen
+          <button class="btn gold" type="submit" id="enviar">Contáctame
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           <p class="msg" id="msg" role="status" hidden></p>
         </form>
@@ -582,7 +577,10 @@ document.getElementById('copy').addEventListener('click', function () {
 fetch('noticias.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (list) {
   if (!list.length) return;
   document.getElementById('news').innerHTML = list.slice(0, 6).map(function (n) {
-    return '<a class="post" href="' + esc(n.url) + '" target="_blank" rel="noopener"><div class="meta"><span class="cat ' + esc(n.categoria) + '">' + esc(n.categoria) + '</span><span>' + fmtDate(n.fecha) + '</span></div><h3>' + esc(n.titulo) + '</h3><div class="org">' + esc(n.organismo) + '</div></a>';
+    var body = n.resumen
+      ? '<h3>' + esc(n.titular) + '</h3><p class="sum">' + esc(n.resumen) + '</p><div class="org">Resumen automático · ' + esc(n.organismo) + '</div>'
+      : '<h3>' + esc(n.titulo) + '</h3><div class="org">' + esc(n.organismo) + '</div>';
+    return '<a class="post" href="' + esc(n.url) + '" target="_blank" rel="noopener"><div class="meta"><span class="cat ' + esc(n.categoria) + '">' + esc(n.categoria) + '</span><span>' + fmtDate(n.fecha) + '</span></div>' + body + '</a>';
   }).join('');
 }).catch(function () {});
 
@@ -591,17 +589,16 @@ var form = document.getElementById('form'), msg = document.getElementById('msg')
 function show(t, ok) { msg.textContent = t; msg.className = 'msg ' + (ok ? 'ok' : 'err'); msg.hidden = false; }
 form.addEventListener('submit', function (e) {
   e.preventDefault(); var bad = false;
-  ['nombre', 'empresa', 'email', 'telefono'].forEach(function (id) {
+  ['nombre', 'empresa', 'email', 'telefono', 'sector'].forEach(function (id) {
     var el = document.getElementById(id), v = el.value.trim();
     var ok = id === 'telefono' ? v.replace(/\D/g, '').length >= 9 : id === 'email' ? /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) : v !== '';
     el.classList.toggle('bad', !ok); if (!ok) bad = true;
   });
-  var sec = !!form.querySelector('input[name=sector]:checked'); document.getElementById('sector-g').classList.toggle('bad', !sec); if (!sec) bad = true;
   var ac = document.getElementById('acepto').checked; document.querySelector('.check').classList.toggle('bad', !ac); if (!ac) bad = true;
   if (bad) { show('Complete los campos marcados en rojo y acepte la información de privacidad.', false); return; }
   btn.disabled = true; btn.textContent = 'Enviando…';
   fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
-    .then(function (r) { if (!r.ok) throw 0; form.reset(); show('Recibido. Le llamaremos lo antes posible.', true); })
+    .then(function (r) { if (!r.ok) throw 0; form.reset(); show('Recibido. Le contactaremos lo antes posible.', true); })
     .catch(function () { show('No se ha podido enviar. Escríbanos a aitor@dirfisa.com.', false); })
     .finally(function () { btn.disabled = false; btn.innerHTML = BTN; });
 });
