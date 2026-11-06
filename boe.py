@@ -6,7 +6,7 @@ import json, re, sys, time, unicodedata, urllib.request, urllib.error
 from datetime import date, timedelta
 from pathlib import Path
 
-SALIDA = Path(__file__).resolve().parent.parent / "web" / "noticias.json"
+SALIDA = Path(__file__).resolve().parent / "noticias.json"
 MAX = 300
 SECCIONES = {"1", "3"}  # I. Disposiciones generales, III. Otras disposiciones
 
