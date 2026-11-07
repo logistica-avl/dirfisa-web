@@ -484,7 +484,7 @@ footer nav a:hover{color:var(--ink)}
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span><b>Informe de ejemplo</b> de su sector, para que vea lo que recibirá.</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg><span><b>Trato directo</b> con quien analiza sus números.</span></li>
           </ul>
-          <p class="mailalt">O escríbanos a <span class="mail" id="mail">aitor@dirfisa.com</span> <button class="copybtn" id="copy" type="button">Copiar</button> <span class="copied" id="copied" hidden>Copiado</span></p>
+          <p class="mailalt">O escríbanos a <span class="mail" id="mail">info@dirfisa.com</span> <button class="copybtn" id="copy" type="button">Copiar</button> <span class="copied" id="copied" hidden>Copiado</span></p>
         </div>
 
         <form class="form" id="form" name="contacto" method="POST" data-netlify="true" netlify-honeypot="web" novalidate>
@@ -509,7 +509,7 @@ footer nav a:hover{color:var(--ink)}
             </div>
           </fieldset>
           <label class="check" for="acepto"><input type="checkbox" id="acepto" name="acepto" value="sí">
-            <span>Acepto la <details><summary>información de privacidad</summary><small>Responsable: Aitor Díaz Camarena (DIRFISA), aitor@dirfisa.com. Finalidad: atender su solicitud y llamarle. Base legal: su consentimiento. No se ceden datos a terceros salvo al proveedor de alojamiento web. Puede ejercer sus derechos escribiendo a ese email.</small></details></span></label>
+            <span>Acepto la <details><summary>información de privacidad</summary><small>Responsable: Aitor Díaz Camarena (DIRFISA), info@dirfisa.com. Finalidad: atender su solicitud y llamarle. Base legal: su consentimiento. No se ceden datos a terceros salvo al proveedor de alojamiento web. Puede ejercer sus derechos escribiendo a ese email.</small></details></span></label>
           <button class="btn gold" type="submit" id="enviar">Contáctame
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           <p class="msg" id="msg" role="status" hidden></p>
@@ -599,7 +599,7 @@ form.addEventListener('submit', function (e) {
   btn.disabled = true; btn.textContent = 'Enviando…';
   fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() })
     .then(function (r) { if (!r.ok) throw 0; form.reset(); show('Recibido. Le contactaremos lo antes posible.', true); })
-    .catch(function () { show('No se ha podido enviar. Escríbanos a aitor@dirfisa.com.', false); })
+    .catch(function () { show('No se ha podido enviar. Escríbanos a info@dirfisa.com.', false); })
     .finally(function () { btn.disabled = false; btn.innerHTML = BTN; });
 });
 </script>
